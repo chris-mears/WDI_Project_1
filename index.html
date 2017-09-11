@@ -6,20 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simon</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <main>
-        <section id="gameManual">
-
+        <section id="gameManual" class="">
+            <h1 id="title">Instructions</h1>
+            <p id="description">Get ready to watch, remember, repeat! The Simon game is the exciting electronic game of lights and sounds in which players must repeat random sequences of lights by pressing the colored pads in the correct order. It's fast-paced play, with
+                lights and sounds that can challenge you. Experience the fun as you repeat the patterns and advance to higher levels. Keep track of your score as you challenge friends or try to beat your own high score.</p>
+            <button id="start">Start</button>
         </section>
-        <section id="game">
+        <section id="game" class="hidden">
             <div id="1" class="green button"></div>
             <div id="2" class="red button"></div>
             <div id="3" class="yellow button"></div>
             <div id="4" class="blue button"></div>
         </section>
+        <button id="test">Test Functionality</button>
     </main>
     <script src="./JS/jquery.min.js"></script>
     <script src="./JS/main.js"></script>

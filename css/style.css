@@ -1,0 +1,63 @@
+body {
+    background: darkslategrey;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    margin: 5vh;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+}
+
+#game {
+    height: 50vh;
+    width: 50vh;
+    display: flex;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+#game .button {
+    height: 20vh;
+    width: 20vh;
+    margin: 2.5vh;
+}
+
+.green {
+    background: green;
+}
+
+.red {
+    background: #A70101;
+}
+
+.yellow {
+    background: #D8D801;
+}
+
+.blue {
+    background: #0000A3;
+}
+
+.greenLight {
+    background: #00D600;
+}
+
+.redLight {
+    background: red;
+}
+
+.yellowLight {
+    background: yellow;
+}
+
+.blueLight {
+    background: blue;
+}
