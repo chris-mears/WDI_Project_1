@@ -1,5 +1,5 @@
 body {
-    background: darkslategrey;
+    background: #7D7E7E;
     display: flex;
     justify-content: center;
 }
@@ -31,19 +31,19 @@ main {
 }
 
 .green {
-    background: green;
+    background: #005A00;
 }
 
 .red {
-    background: #A70101;
+    background: #7C0101;
 }
 
 .yellow {
-    background: #D8D801;
+    background: #ACAC02;
 }
 
 .blue {
-    background: #0000A3;
+    background: #010175;
 }
 
 .greenLight {
