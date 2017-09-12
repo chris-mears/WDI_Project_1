@@ -1,5 +1,5 @@
 body {
-    background: #7D7E7E;
+    background: #454646;
     display: flex;
     justify-content: center;
 }
@@ -18,47 +18,67 @@ main {
 
 #game {
     /* height: 50vh; */
-    width: 50vh;
+    width: 600px;
+    height: 600px;
+    border-radius: 300px;
     display: flex;
-    justify-content: space-around;
-    align-content: space-around;
-    border: 1px solid black;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    /* background: #414040; */
+    background-image: url("../images/simon.png");
 }
 
 #game .button {
-    height: 20vh;
-    width: 20vh;
-    margin: 2.5vh;
+    height: 300px;
+    width: 300px;
 }
 
 .green {
-    background: #005A00;
+    /* border: 140px solid #1E8401; */
+    /* border-top-left-radius: 300px; */
+    background-image: url("../images/green.png");
 }
 
 .red {
-    background: #7C0101;
+    /* border: 140px solid #950016; */
+    /* border-top-right-radius: 300px; */
+    background-image: url("../images/red.png");
 }
 
 .yellow {
-    background: #ACAC02;
+    /* border: 140px solid #BDC00D; */
+    /* border-bottom-left-radius: 300px; */
+    background-image: url("../images/yellow.png");
 }
 
 .blue {
-    background: #010175;
+    /* border: 140px solid #0F3EA7; */
+    /* border-bottom-right-radius: 300px; */
+    background-image: url("../images/blue.png");
 }
 
 .greenLight {
-    background: #00D600;
+    /* border: 140px solid #31F206; */
+    /* border-top-left-radius: 300px; */
+    background-image: url("../images/greenlight.png");
 }
 
 .redLight {
-    background: red;
+    /* border: 140px solid #E9000E; */
+    /* border-top-right-radius: 300px; */
+    background-image: url("../images/redlight.png");
 }
 
 .yellowLight {
-    background: yellow;
+    /* border: 140px solid #FDFF0E; */
+    /* border-bottom-left-radius: 300px; */
+    background-image: url("../images/yellowlight.png");
 }
 
 .blueLight {
-    background: blue;
+    /* border: 140px solid #1158FE; */
+    /* border-bottom-right-radius: 300px; */
+    background-image: url("../images/bluelight.png");
 }

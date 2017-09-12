@@ -40,7 +40,7 @@ $(() => {
         //used timeout here to allow the light to stay on for a little while
         setTimeout(function() {
             $('#' + i).attr('class', nonLights[i - 1]);
-        }, 200);
+        }, 300);
     }
 
     //runs the sequence for light up
