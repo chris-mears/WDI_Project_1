@@ -1,11 +1,25 @@
 body {
     background: #454646;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 main {
     margin: 5vh;
+}
+
+#score {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 600px;
+}
+
+h3 {
+    margin: 0px;
 }
 
 .hidden {
@@ -17,7 +31,6 @@ main {
 }
 
 #game {
-    /* height: 50vh; */
     width: 600px;
     height: 600px;
     border-radius: 300px;
@@ -26,7 +39,6 @@ main {
     justify-content: center;
     align-content: center;
     align-items: center;
-    /* background: #414040; */
     background-image: url("../images/simon.png");
 }
 
@@ -36,49 +48,151 @@ main {
 }
 
 .green {
-    /* border: 140px solid #1E8401; */
-    /* border-top-left-radius: 300px; */
     background-image: url("../images/green.png");
 }
 
 .red {
-    /* border: 140px solid #950016; */
-    /* border-top-right-radius: 300px; */
     background-image: url("../images/red.png");
 }
 
 .yellow {
-    /* border: 140px solid #BDC00D; */
-    /* border-bottom-left-radius: 300px; */
     background-image: url("../images/yellow.png");
 }
 
 .blue {
-    /* border: 140px solid #0F3EA7; */
-    /* border-bottom-right-radius: 300px; */
     background-image: url("../images/blue.png");
 }
 
 .greenLight {
-    /* border: 140px solid #31F206; */
-    /* border-top-left-radius: 300px; */
     background-image: url("../images/greenlight.png");
 }
 
 .redLight {
-    /* border: 140px solid #E9000E; */
-    /* border-top-right-radius: 300px; */
     background-image: url("../images/redlight.png");
 }
 
 .yellowLight {
-    /* border: 140px solid #FDFF0E; */
-    /* border-bottom-left-radius: 300px; */
     background-image: url("../images/yellowlight.png");
 }
 
 .blueLight {
-    /* border: 140px solid #1158FE; */
-    /* border-bottom-right-radius: 300px; */
     background-image: url("../images/bluelight.png");
+}
+
+@media (max-width: 600px) {
+    #score {
+        width: 90vw;
+        order: 1;
+    }
+    main {
+        order: 2;
+    }
+    #game {
+        width: 100vw;
+        height: 80vh;
+        display: flex;
+        flex-wrap: nowrap;
+        border-radius: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-content: space-around;
+        background: #414040;
+    }
+    #game .button {
+        margin: 2em;
+        width: 90vw;
+        height: 50vh;
+        border-radius: 2em;
+    }
+    .green {
+        background: #1E8401;
+        background-image: none;
+    }
+    .red {
+        background: #950016;
+        background-image: none;
+    }
+    .yellow {
+        background: #BDC00D;
+        background-image: none;
+    }
+    .blue {
+        background: #0F3EA7;
+        background-image: none;
+    }
+    .greenLight {
+        background: #31F206;
+        background-image: none;
+    }
+    .redLight {
+        background: #E9000E;
+        background-image: none;
+    }
+    .yellowLight {
+        background: #FDFF0E;
+        background-image: none;
+    }
+    .blueLight {
+        background: #1158FE;
+        background-image: none;
+    }
+}
+
+@media (max-height: 600px) {
+    #score {
+        width: 90vw;
+        order: 1;
+    }
+    main {
+        order: 2;
+    }
+    #game {
+        width: 100vw;
+        height: 80vh;
+        display: flex;
+        flex-wrap: nowrap;
+        border-radius: 0;
+        flex-direction: row;
+        justify-content: center;
+        align-content: space-around;
+        background: #414040;
+    }
+    #game .button {
+        margin: 2em;
+        width: 90vw;
+        height: 50vh;
+        border-radius: 2em;
+    }
+    .green {
+        background: #1E8401;
+        background-image: none;
+    }
+    .red {
+        background: #950016;
+        background-image: none;
+    }
+    .yellow {
+        background: #BDC00D;
+        background-image: none;
+    }
+    .blue {
+        background: #0F3EA7;
+        background-image: none;
+    }
+    .greenLight {
+        background: #31F206;
+        background-image: none;
+    }
+    .redLight {
+        background: #E9000E;
+        background-image: none;
+    }
+    .yellowLight {
+        background: #FDFF0E;
+        background-image: none;
+    }
+    .blueLight {
+        background: #1158FE;
+        background-image: none;
+    }
 }

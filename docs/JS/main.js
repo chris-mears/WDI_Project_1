@@ -11,20 +11,25 @@ $(() => {
         clicked: 0,
         //used to help with the lightUp Sequence
         lighted: 0,
+        //used to keep track of rounds
+        round: 0,
+        //used to keep track of highscore
+        highScore: 0,
     }
 
     //Game Content Update Section
     //Reset Message
     const resetGame = {
         title: "Wrong one!",
-        description: "Looks you made it to Sqeuence: #. If you would like to see if you can beat your score please click Try Again.",
+        description: "Looks you made it to Round: ",
+        description2: "<p>If you would like to see if you can beat your score please click Try Again.</p>",
         button: "Try Again"
     };
 
     //function to reload game
     function loadText(text) {
         $('#title').text(text.title);
-        $('#description').text(text.description);
+        $('#description').html(text.description + gameSequence.round + text.description2);
         $('#start').text(text.button);
     };
 
@@ -43,8 +48,16 @@ $(() => {
         }, 300);
     }
 
+    function highestScore() {
+        if (gameSequence.round > gameSequence.highScore) {
+            gameSequence.highScore = gameSequence.round;
+            $('#highScore').text(gameSequence.highScore);
+        }
+    }
+
     //runs the sequence for light up
     function runSequence() {
+        highestScore();
         //timeout set up so that each ligth will go in sequence rather than lighting up together
         setTimeout(function() {
             lightUp(gameSequence.sequence[gameSequence.lighted]);
@@ -62,6 +75,8 @@ $(() => {
 
     //starts next round by adding to sequence and starting runSequence function
     function nextRound() {
+        gameSequence.round++;
+        $('#round').text(gameSequence.round);
         gameSequence.sequence.push(gameSequence.rundomNumber());
         runSequence();
     };
@@ -108,10 +123,15 @@ $(() => {
         $('#gameManual').hide();
         $('#game').attr('class', 'visible');
         $('#game').show();
+        $('#score').attr('class', 'visible');
+        $('#score').show();
+        gameSequence.round = 1;
+        $('#round').text(gameSequence.round);
         gameSequence.sequence.push(gameSequence.rundomNumber());
     };
     //hides game at start
     $('#game').hide();
+    $('#score').hide();
     //waits for user to click start to iniate game
     $('#start').on('click', function() {
         start();
