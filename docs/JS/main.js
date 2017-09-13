@@ -148,6 +148,7 @@ $(() => {
     //function to start game hide manual section change game to visible and shows it.
     function start() {
         $('#gameManual').hide();
+        $("#circle").attr("class", "");
         $('#circle').show();
         gameSequence.round = 1;
         $('#round').text(gameSequence.round);
