@@ -21,7 +21,6 @@ body {
 #circle2 {
     height: 600px;
     width: 600px;
-    /* border: 30px solid #545454; */
     border-radius: 300px;
     margin: 0;
     display: flex;
