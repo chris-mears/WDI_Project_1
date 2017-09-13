@@ -39,8 +39,23 @@ $(() => {
     //array of nonlight classes for css
     const nonLights = ["green button", "red button", "yellow button", "blue button"];
 
-    //controls the color change for the light
+    //array of sounds
+    const sounds = ['./audio/tone-1.wav', './audio/tone-2.wav', './audio/tone-3.wav', './audio/tone-4.wav', './audio/wrong.wav'];
+    const audio = $('#sound')
+
+    //creates sound
+    function makeSound(i) {
+        $('#tone').attr('src', sounds[i - 1]);
+        audio[0].pause();
+        audio[0].load();
+        audio[0].play();
+    }
+
+    //controls the color change for the light and sound
     function lightUp(i) {
+        //trying to get audio to work here
+        makeSound(i);
+        //changes class to create light effect
         $('#' + i).attr('class', Lights[i - 1]);
         //used timeout here to allow the light to stay on for a little while
         setTimeout(function() {
@@ -75,10 +90,12 @@ $(() => {
 
     //starts next round by adding to sequence and starting runSequence function
     function nextRound() {
-        gameSequence.round++;
-        $('#round').text(gameSequence.round);
-        gameSequence.sequence.push(gameSequence.rundomNumber());
-        runSequence();
+        setTimeout(function() {
+            gameSequence.round++;
+            $('#round').text(gameSequence.round);
+            gameSequence.sequence.push(gameSequence.rundomNumber());
+            runSequence();
+        }, 1000);
     };
 
     //function for listening for correct sequence of clicks
@@ -110,9 +127,17 @@ $(() => {
                 $event.stopPropagation();
                 console.log('Wrong');
                 //turns event listener off after click to prevent the click looping through the function
+
                 $('#1, #2, #3, #4').off('click');
+                setTimeout(function() {
+                    $('#tone').attr('src', sounds[4]);
+                    audio[0].pause();
+                    audio[0].load();
+                    audio[0].play();
+                }, 500);
                 loadText(resetGame);
                 $('#game').hide();
+                $('#score').hide();
                 $('#gameManual').show();
                 gameSequence.sequence = [];
                 gameSequence.clicked = 0;
