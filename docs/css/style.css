@@ -182,7 +182,7 @@ h3 {
     }
 }
 
-@media only screen and (max-width: 629px) and (max-height: 724px) and (orientation: landscape) {
+@media only screen and (max-width: 700px) and (max-height: 724px) and (orientation: landscape) {
     #game {
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
