@@ -112,3 +112,122 @@ body {
     width: 0px;
     border-bottom-right-radius: 280px;
 }
+
+@media only screen and (max-width: 736px) and (max-height: 736px) {
+    #gameManual {
+        max-width: 100%;
+        min-width: 100%;
+    }
+    #circle {
+        width: 96vw;
+        height: 90vh;
+        margin: 2vw 2vh;
+        display: flex;
+        flex-wrap: nowrap;
+        border-radius: 0;
+        flex-direction: column;
+        background: #414040;
+    }
+    #innerCircle {
+        border-radius: 0;
+        margin: 1em;
+        order: 1;
+        width: 90vw;
+        height: 15vh;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+    #circle2 {
+        order: 2;
+        width: 90vw;
+        height: 75vh;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    #verticalLine {
+        display: none;
+    }
+    #horizontalLine {
+        display: none;
+    }
+    #a {
+        height: 15vh;
+        width: 65vw;
+        border-radius: 1em;
+    }
+    #b {
+        height: 15vh;
+        width: 65vw;
+        border-radius: 1em;
+    }
+    #c {
+        height: 15vh;
+        width: 65vw;
+        border-radius: 1em;
+    }
+    #d {
+        height: 15vh;
+        width: 65vw;
+        border-radius: 1em;
+    }
+    .green {
+        background: #1E8401;
+        border: none;
+    }
+    .red {
+        background: #950016;
+        border: none;
+    }
+    .yellow {
+        background: #BDC00D;
+        border: none;
+    }
+    .blue {
+        background: #0F3EA7;
+        border: none;
+    }
+    .greenLight {
+        background: #31F206;
+        border: none;
+    }
+    .redLight {
+        background: #E9000E;
+        border: none;
+    }
+    .yellowLight {
+        background: #FDFF0E;
+        border: none;
+    }
+    .blueLight {
+        background: #1158FE;
+        border: none;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    #circle2 {
+        flex-direction: row;
+    }
+    #a {
+        width: 15vw;
+        height: 65vh;
+        border-radius: 1em;
+    }
+    #b {
+        width: 15vw;
+        height: 65vh;
+        border-radius: 1em;
+    }
+    #c {
+        width: 15vw;
+        height: 65vh;
+        border-radius: 1em;
+    }
+    #d {
+        width: 15vw;
+        height: 65vh;
+        border-radius: 1em;
+    }
+}
