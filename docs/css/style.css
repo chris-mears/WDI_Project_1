@@ -17,10 +17,6 @@ body {
     flex-wrap: wrap;
 }
 
-main {
-    margin: 5vh;
-}
-
 #score {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -36,7 +32,7 @@ main {
 }
 
 h3 {
-    margin: 0px;
+    margin: 0;
 }
 
 .hidden {
