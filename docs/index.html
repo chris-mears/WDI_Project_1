@@ -11,31 +11,34 @@
 </head>
 
 <body>
-    <main>
-        <section id="gameManual">
-            <h1 id="title">Instructions</h1>
-            <p id="description">Get ready to watch, remember, repeat! The Simon game is the exciting electronic game of lights and sounds in which players must repeat random sequences of lights by pressing the colored pads in the correct order. It's fast-paced play, with
-                lights and sounds that can challenge you. Experience the fun as you repeat the patterns and advance to higher levels. Keep track of your score as you challenge friends or try to beat your own high score.</p>
-            <button id="start">Start</button>
-        </section>
-        <section id="game" class="hidden">
-            <div id="1" class="green button"></div>
-            <div id="2" class="red button"></div>
-            <div id="3" class="yellow button"></div>
-            <div id="4" class="blue button"></div>
-        </section>
-    </main>
-    <footer id="score" class="hidden">
-        <h3>Round: <span id="round">0</span></h3>
-        <h3>Highest Round: <span id="highScore">0</span></h3>
-    </footer>
+    <section id="gameManual">
+        <h1 id="title">Instructions</h1>
+        <p id="description">Get ready to watch, remember, repeat! The Simon game is the exciting electronic game of lights and sounds in which players must repeat random sequences of lights by pressing the colored pads in the correct order. It's fast-paced play, with lights
+            and sounds that can challenge you. Experience the fun as you repeat the patterns and advance to higher levels. Keep track of your score as you challenge friends or try to beat your own high score.</p>
+        <button id="start">Start</button>
+    </section>
+    <div id="circle">
+        <div id="circle2">
+            <div id="a" class="green" data-id="1"></div>
+            <div id="b" class="red" data-id="2"></div>
+            <div id="c" class="yellow" data-id="3"></div>
+            <div id="d" class="blue" data-id="4"></div>
+        </div>
+        <div id="horizontalLine"></div>
+        <div id="verticalLine"></div>
+        <div id="innerCircle">
+            <h3>highest round: <span id="highScore">0</span></h3>
+            <h3>round: <span id="round">0</span></h3>
+        </div>
+    </div>
     <audio id="sound">
-        <source id="tone" src="./audio/tone-1.wav" type="audio/wav">
-        <source id="wrong" src="./audio/wrong.wav" type="audio/wav">
-    </audio>
+            <source id="tone" src="./audio/tone-1.wav" type="audio/wav">
+            <source id="wrong" src="./audio/wrong.wav" type="audio/wav">
+        </audio>
     </audio>
     <script src="./JS/jquery.min.js"></script>
     <script src="./JS/main.js"></script>
+</body>
 </body>
 
 </html>
