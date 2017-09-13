@@ -83,13 +83,14 @@ $(() => {
 
     //function for listening for correct sequence of clicks
     function clickListener() {
-        $('#1, #2, #3, #4').on('click', function() {
+        $('#1, #2, #3, #4').on('click', function($event) {
             //animates light up on click
             lightUp(this.id);
             //if correct click
             if (parseInt(this.id) === gameSequence.sequence[gameSequence.clicked]) {
                 //if this click is the last click
                 if (gameSequence.clicked === gameSequence.sequence.length - 1) {
+                    $event.stopPropagation();
                     console.log('right');
                     gameSequence.clicked = 0;
                     //turns event listener off after click to prevent the click looping through the function
@@ -97,6 +98,7 @@ $(() => {
                     nextRound();
                     //if this click is not the last
                 } else {
+                    $event.stopPropagation();
                     console.log('right');
                     gameSequence.clicked++;
                     //turns event listener off after click to prevent the click looping through the function
@@ -105,6 +107,7 @@ $(() => {
                 }
                 //if this is the wrong click for the sequence
             } else {
+                $event.stopPropagation();
                 console.log('Wrong');
                 //turns event listener off after click to prevent the click looping through the function
                 $('#1, #2, #3, #4').off('click');
@@ -114,7 +117,7 @@ $(() => {
                 gameSequence.sequence = [];
                 gameSequence.clicked = 0;
             }
-        })
+        });
     };
 
     //App Operation Section

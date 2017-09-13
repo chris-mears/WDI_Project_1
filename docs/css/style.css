@@ -81,15 +81,16 @@ h3 {
 
 @media (max-width: 600px) {
     #score {
-        width: 90vw;
+        width: 90%;
         order: 1;
     }
     main {
         order: 2;
+        min-width: 400px;
+        min-height: 200px;
     }
     #game {
-        width: 100vw;
-        height: 80vh;
+        min-width: 400px;
         display: flex;
         flex-wrap: nowrap;
         border-radius: 0;
@@ -100,8 +101,8 @@ h3 {
     }
     #game .button {
         margin: 2em;
-        width: 90vw;
-        height: 50vh;
+        width: 90%;
+        height: 50%;
         border-radius: 2em;
     }
     .green {
