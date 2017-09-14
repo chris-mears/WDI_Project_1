@@ -8,6 +8,8 @@
     <title>Simon</title>
     <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/landscape.css">
     <link rel="shortcut icon" href="images/pa_head_logo.png" type="image/x-icon">
 </head>
 
@@ -23,14 +25,14 @@
                     <li>Easy Mode: Starts a Standard game</li>
                     <li>Medium Mode: For each round the Sequence will get faster</li>
                     <li>Hard Mode: For each round the pads will move after Sequence Runs</li>
-                    <li>Impoosible Mode: Is Medium and Hard combined</li>
+                    <li>Evil Mode: Is Medium and Hard combined</li>
                 </ul>
             </div>
             <div id="buttons">
                 <button id="easy">Easy</button>
                 <button id="medium">Medium</button>
                 <button id="hard">Hard</button>
-                <button id="impossible">Impossible</button>
+                <button id="impossible">Evil</button>
             </div>
         </div>
     </div>
@@ -45,6 +47,7 @@
         <div id="verticalLine"></div>
         <div id="innerCircle">
             <h1 id="simon">Simon</h1>
+            <h3 id="difficulty"></h3>
             <div id="score">
                 <h3>Highest <span id="highScore">0</span></h3>
                 <h3>Round <span id="round">0</span></h3>
@@ -53,7 +56,6 @@
     </div>
     <audio id="sound">
             <source id="tone" src="./audio/tone-1.wav" type="audio/wav">
-            <source id="wrong" src="./audio/wrong.wav" type="audio/wav">
         </audio>
     </audio>
     <script src="./JS/jquery.min.js"></script>

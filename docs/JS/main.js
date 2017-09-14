@@ -15,6 +15,8 @@ $(() => {
         round: 0,
         //used to keep track of highscore
         highScore: 0,
+        //difficulty value
+        difficulty: "easy",
         //tracks medium mode
         medium: false,
         //tracks hard mode
@@ -131,11 +133,9 @@ $(() => {
             if (gameSequence.round < 10) {
                 gameSequence.lightSpeed -= 30;
                 gameSequence.seqSpeed -= 100;
-                console.log(gameSequence.lightSpeed, gameSequence.seqSpeed);
             } else if (gameSequence.round >= 10) {
                 gameSequence.lightSpeed = 50;
                 gameSequence.seqSpeed = 100;
-                console.log(gameSequence.lightSpeed, gameSequence.seqSpeed);
             }
         }
         setTimeout(function() {
@@ -200,6 +200,7 @@ $(() => {
         gameSequence.seqSpeed = 1000;
         gameSequence.round = 1;
         $('#round').text(gameSequence.round);
+        $('#difficulty').text(gameSequence.difficulty);
         gameSequence.sequence.push(gameSequence.rundomNumber());
     };
     //hides game at start
@@ -211,17 +212,20 @@ $(() => {
     });
     $('#medium').on('click', function() {
         gameSequence.medium = true;
-        start();
+        gameSequence.difficulty = "Medium",
+            start();
         runSequence();
     });
     $('#hard').on('click', function() {
         gameSequence.hard = true;
+        gameSequence.difficulty = "Hard";
         start();
         runSequence();
     });
     $('#impossible').on('click', function() {
         gameSequence.medium = true;
         gameSequence.hard = true;
+        gameSequence.difficulty = "Evil";
         start();
         runSequence();
     });
