@@ -1,4 +1,3 @@
-//code before css update for simon
 $(() => {
     //Game Logic Section
     const gameSequence = {
@@ -16,6 +15,14 @@ $(() => {
         round: 0,
         //used to keep track of highscore
         highScore: 0,
+        //tracks medium mode
+        medium: false,
+        //tracks hard mode
+        hard: false,
+        //speed of light up for SetTimeout in lightUP default is 300
+        lightSpeed: 50,
+        //speed of sequence firing for runSequence default is 1000
+        seqSpeed: 100,
     }
 
     //Game Content Update Section
@@ -46,6 +53,7 @@ $(() => {
 
     //creates sound
     function makeSound(i) {
+        //audio wasn't playing every sound with play, added a pause, load and built an array to insert each sound when needed
         $('#tone').attr('src', sounds[i - 1]);
         audio[0].pause();
         audio[0].load();
@@ -57,11 +65,15 @@ $(() => {
         //trying to get audio to work here
         makeSound(i);
         //changes class to create light effect
-        $('#' + i).attr('class', Lights[i - 1]);
+        $(`[data-id="${i}"]`).attr('class', Lights[i - 1]);
         //used timeout here to allow the light to stay on for a little while
         setTimeout(function() {
-            $('#' + i).attr('class', nonLights[i - 1]);
-        }, 300);
+            $(`[data-id="${i}"]`).attr('class', nonLights[i - 1]);
+        }, gameSequence.lightSpeed);
+    }
+
+    function hardMode() {
+
     }
 
     function highestScore() {
@@ -86,13 +98,25 @@ $(() => {
                 gameSequence.lighted = 0;
                 clickListener();
             }
-        }, 1000);
+        }, gameSequence.seqSpeed);
     };
 
     //starts next round by adding to sequence and starting runSequence function
     function nextRound() {
+        gameSequence.round++;
+        //logic for medium difficulty to cause sequence to get faster
+        if (gameSequence.medium === true) {
+            if (gameSequence.round < 10) {
+                gameSequence.lightSpeed -= 30;
+                gameSequence.seqSpeed -= 100;
+                console.log(gameSequence.lightSpeed, gameSequence.seqSpeed);
+            } else if (gameSequence.round >= 10) {
+                gameSequence.lightSpeed = 50;
+                gameSequence.seqSpeed = 100;
+                console.log(gameSequence.lightSpeed, gameSequence.seqSpeed);
+            }
+        }
         setTimeout(function() {
-            gameSequence.round++;
             $('#round').text(gameSequence.round);
             gameSequence.sequence.push(gameSequence.rundomNumber());
             runSequence();
@@ -101,18 +125,18 @@ $(() => {
 
     //function for listening for correct sequence of clicks
     function clickListener() {
-        $('#1, #2, #3, #4').on('click', function($event) {
+        $('#a, #b, #c, #d').on('click', function($event) {
             //animates light up on click
-            lightUp(this.id);
+            lightUp(event.target.dataset.id);
             //if correct click
-            if (parseInt(this.id) === gameSequence.sequence[gameSequence.clicked]) {
+            if (parseInt(event.target.dataset.id) === gameSequence.sequence[gameSequence.clicked]) {
                 //if this click is the last click
                 if (gameSequence.clicked === gameSequence.sequence.length - 1) {
                     $event.stopPropagation();
                     console.log('right');
                     gameSequence.clicked = 0;
                     //turns event listener off after click to prevent the click looping through the function
-                    $('#1, #2, #3, #4').off('click');
+                    $('#a, #b, #c, #d').off('click');
                     nextRound();
                     //if this click is not the last
                 } else {
@@ -120,7 +144,7 @@ $(() => {
                     console.log('right');
                     gameSequence.clicked++;
                     //turns event listener off after click to prevent the click looping through the function
-                    $('#1, #2, #3, #4').off('click');
+                    $('#a, #b, #c, #d').off('click');
                     clickListener();
                 }
                 //if this is the wrong click for the sequence
@@ -129,7 +153,7 @@ $(() => {
                 console.log('Wrong');
                 //turns event listener off after click to prevent the click looping through the function
 
-                $('#1, #2, #3, #4').off('click');
+                $('#a, #b, #c, #d').off('click');
                 setTimeout(function() {
                     $('#tone').attr('src', sounds[4]);
                     audio[0].pause();
@@ -137,8 +161,7 @@ $(() => {
                     audio[0].play();
                 }, 500);
                 loadText(resetGame);
-                $('#game').hide();
-                $('#score').hide();
+                $('#circle').hide();
                 $('#gameManual').show();
                 gameSequence.sequence = [];
                 gameSequence.clicked = 0;
@@ -150,17 +173,16 @@ $(() => {
     //function to start game hide manual section change game to visible and shows it.
     function start() {
         $('#gameManual').hide();
-        $('#game').attr('class', 'visible');
-        $('#game').show();
-        $('#score').attr('class', 'visible');
-        $('#score').show();
+        $("#circle").attr("class", "");
+        $('#circle').show();
+        gameSequence.lightSpeed = 300;
+        gameSequence.seqSpeed = 1000;
         gameSequence.round = 1;
         $('#round').text(gameSequence.round);
         gameSequence.sequence.push(gameSequence.rundomNumber());
     };
     //hides game at start
-    $('#game').hide();
-    $('#score').hide();
+    $('#circle').hide();
     //waits for user to click start to iniate game
     $('#start').on('click', function() {
         start();

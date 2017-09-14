@@ -15,6 +15,14 @@ $(() => {
         round: 0,
         //used to keep track of highscore
         highScore: 0,
+        //tracks medium mode
+        medium: false,
+        //tracks hard mode
+        hard: false,
+        //speed of light up for SetTimeout in lightUP default is 300
+        lightSpeed: 50,
+        //speed of sequence firing for runSequence default is 1000
+        seqSpeed: 100,
     }
 
     //Game Content Update Section
@@ -23,14 +31,12 @@ $(() => {
         title: "Wrong one!",
         description: "Looks you made it to Round: ",
         description2: "<p>If you would like to see if you can beat your score please click Try Again.</p>",
-        button: "Try Again"
     };
 
     //function to reload game
     function loadText(text) {
         $('#title').text(text.title);
         $('#description').html(text.description + gameSequence.round + text.description2);
-        $('#start').text(text.button);
     };
 
     //array of lights classes for css
@@ -45,6 +51,7 @@ $(() => {
 
     //creates sound
     function makeSound(i) {
+        //audio wasn't playing every sound with play, added a pause, load and built an array to insert each sound when needed
         $('#tone').attr('src', sounds[i - 1]);
         audio[0].pause();
         audio[0].load();
@@ -60,7 +67,26 @@ $(() => {
         //used timeout here to allow the light to stay on for a little while
         setTimeout(function() {
             $(`[data-id="${i}"]`).attr('class', nonLights[i - 1]);
-        }, 300);
+        }, gameSequence.lightSpeed);
+    }
+
+    function hardMode() {
+        let panels = [
+            { id: 1, class: "green", },
+            { id: 2, class: "red", },
+            { id: 3, class: "yellow", },
+            { id: 4, class: "blue" }
+        ];
+        for (let i = panels.length - 1; i >= 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            let temp = panels[i];
+            panels[i] = panels[j];
+            panels[j] = temp;
+        }
+        $("#a").attr({ 'class': panels[0].class, "data-id": panels[0].id });
+        $("#b").attr({ 'class': panels[1].class, "data-id": panels[1].id });
+        $("#c").attr({ 'class': panels[2].class, "data-id": panels[2].id });
+        $("#d").attr({ 'class': panels[3].class, "data-id": panels[3].id });
     }
 
     function highestScore() {
@@ -83,15 +109,32 @@ $(() => {
                 //if the sequence has finished this starts the listening function
             } else {
                 gameSequence.lighted = 0;
-                clickListener();
+                setTimeout(function() {
+                    if (gameSequence.hard === true) {
+                        hardMode();
+                    }
+                    clickListener();
+                }, 1000);
             }
-        }, 1000);
+        }, gameSequence.seqSpeed);
     };
 
     //starts next round by adding to sequence and starting runSequence function
     function nextRound() {
+        gameSequence.round++;
+        //logic for medium difficulty to cause sequence to get faster
+        if (gameSequence.medium === true) {
+            if (gameSequence.round < 10) {
+                gameSequence.lightSpeed -= 30;
+                gameSequence.seqSpeed -= 100;
+                console.log(gameSequence.lightSpeed, gameSequence.seqSpeed);
+            } else if (gameSequence.round >= 10) {
+                gameSequence.lightSpeed = 50;
+                gameSequence.seqSpeed = 100;
+                console.log(gameSequence.lightSpeed, gameSequence.seqSpeed);
+            }
+        }
         setTimeout(function() {
-            gameSequence.round++;
             $('#round').text(gameSequence.round);
             gameSequence.sequence.push(gameSequence.rundomNumber());
             runSequence();
@@ -150,6 +193,8 @@ $(() => {
         $('#gameManual').hide();
         $("#circle").attr("class", "");
         $('#circle').show();
+        gameSequence.lightSpeed = 300;
+        gameSequence.seqSpeed = 1000;
         gameSequence.round = 1;
         $('#round').text(gameSequence.round);
         gameSequence.sequence.push(gameSequence.rundomNumber());
