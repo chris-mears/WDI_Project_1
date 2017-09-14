@@ -183,6 +183,8 @@ $(() => {
                 $('#gameManual').show();
                 gameSequence.sequence = [];
                 gameSequence.clicked = 0;
+                gameSequence.medium = false;
+                gameSequence.hard = false;
             }
         });
     };
@@ -202,7 +204,23 @@ $(() => {
     //hides game at start
     $('#circle').hide();
     //waits for user to click start to iniate game
-    $('#start').on('click', function() {
+    $('#easy').on('click', function() {
+        start();
+        runSequence();
+    });
+    $('#medium').on('click', function() {
+        gameSequence.medium = true;
+        start();
+        runSequence();
+    });
+    $('#hard').on('click', function() {
+        gameSequence.hard = true;
+        start();
+        runSequence();
+    });
+    $('#impossible').on('click', function() {
+        gameSequence.medium = true;
+        gameSequence.hard = true;
         start();
         runSequence();
     });
