@@ -156,7 +156,6 @@ $(() => {
                 if (gameSequence.clicked === gameSequence.sequence.length - 1) {
                     lightUp(event.target.dataset.id);
                     $event.stopPropagation();
-                    console.log('right');
                     gameSequence.clicked = 0;
                     //turns event listener off after click to prevent the click looping through the function
                     $('#a, #b, #c, #d').off('click');
@@ -165,7 +164,6 @@ $(() => {
                 } else {
                     lightUp(event.target.dataset.id);
                     $event.stopPropagation();
-                    console.log('right');
                     gameSequence.clicked++;
                     //turns event listener off after click to prevent the click looping through the function
                     $('#a, #b, #c, #d').off('click');
@@ -174,7 +172,6 @@ $(() => {
                 //if this is the wrong click for the sequence
             } else {
                 $event.stopPropagation();
-                console.log('Wrong');
                 //turns event listener off after click to prevent the click looping through the function
 
                 $('#a, #b, #c, #d').off('click');
