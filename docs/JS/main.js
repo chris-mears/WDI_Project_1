@@ -1,5 +1,5 @@
 $(() => {
-    //Game Logic Section
+    //Game Sequence Logic Section
     const gameSequence = {
         //keeps track of sequence
         sequence: [],
@@ -30,7 +30,7 @@ $(() => {
     const resetGame = {
         title: "Wrong one!",
         description: "Looks you made it to Round: ",
-        description2: "<p>If you would like to see if you can beat your score please click Try Again.</p>",
+        description2: "<br>Try again to beat your score or try a harder setting.",
     };
 
     //function to reload game
@@ -70,6 +70,7 @@ $(() => {
         }, gameSequence.lightSpeed);
     }
 
+    //logic for hard mode functionality
     function hardMode() {
         let panels = [
             { id: 1, class: "green", },
@@ -77,18 +78,21 @@ $(() => {
             { id: 3, class: "yellow", },
             { id: 4, class: "blue" }
         ];
+        //takes above array and randomizes it then puts back into array
         for (let i = panels.length - 1; i >= 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             let temp = panels[i];
             panels[i] = panels[j];
             panels[j] = temp;
         }
+        //take shiffled array and updates class and data-id to change panel
         $("#a").attr({ 'class': panels[0].class, "data-id": panels[0].id });
         $("#b").attr({ 'class': panels[1].class, "data-id": panels[1].id });
         $("#c").attr({ 'class': panels[2].class, "data-id": panels[2].id });
         $("#d").attr({ 'class': panels[3].class, "data-id": panels[3].id });
     }
 
+    //logic for highscore count
     function highestScore() {
         if (gameSequence.round > gameSequence.highScore) {
             gameSequence.highScore = gameSequence.round;
@@ -114,7 +118,7 @@ $(() => {
                         hardMode();
                     }
                     clickListener();
-                }, 1000);
+                }, 500);
             }
         }, gameSequence.seqSpeed);
     };
@@ -173,10 +177,7 @@ $(() => {
 
                 $('#a, #b, #c, #d').off('click');
                 setTimeout(function() {
-                    $('#tone').attr('src', sounds[4]);
-                    audio[0].pause();
-                    audio[0].load();
-                    audio[0].play();
+                    makeSound(5);
                 }, 500);
                 loadText(resetGame);
                 $('#circle').hide();
