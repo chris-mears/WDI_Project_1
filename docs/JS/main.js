@@ -54,7 +54,7 @@ $(() => {
     //creates sound
     function makeSound(i) {
         //audio wasn't playing every sound with play, added a pause, load and built an array to insert each sound when needed
-        $('#tone').attr('src', sounds[i - 1]);
+        $('#sound').attr('src', sounds[i - 1]);
         audio[0].pause();
         audio[0].load();
         audio[0].play();
