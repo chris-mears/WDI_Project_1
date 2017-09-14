@@ -35,12 +35,6 @@ $(() => {
         description2: "<br>Try again to beat your score or try a harder setting.",
     };
 
-    //function to reload game
-    function loadText(text) {
-        $('#title').text(text.title);
-        $('#description').html(text.description + gameSequence.round + text.description2);
-    };
-
     //array of lights classes for css
     const Lights = ["greenLight button", "redLight button", "yellowLight button", "blueLight button"];
 
@@ -49,7 +43,13 @@ $(() => {
 
     //array of sounds
     const sounds = ['./audio/tone-1.wav', './audio/tone-2.wav', './audio/tone-3.wav', './audio/tone-4.wav', './audio/wrong.wav'];
-    const audio = $('#sound')
+    const audio = $('#sound');
+
+    //function to reload game
+    function loadText(text) {
+        $('#title').text(text.title);
+        $('#description').html(text.description + gameSequence.round + text.description2);
+    };
 
     //creates sound
     function makeSound(i) {
