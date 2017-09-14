@@ -1,4 +1,7 @@
 @media only screen and (max-width: 736px) and (max-height: 736px) and (orientation: landscape) {
+    #container {
+        margin: 0;
+    }
     #circle2 {
         flex-direction: row;
         height: 80vh;
