@@ -149,11 +149,12 @@ $(() => {
     function clickListener() {
         $('#a, #b, #c, #d').on('click', function($event) {
             //animates light up on click
-            lightUp(event.target.dataset.id);
+
             //if correct click
             if (parseInt(event.target.dataset.id) === gameSequence.sequence[gameSequence.clicked]) {
                 //if this click is the last click
                 if (gameSequence.clicked === gameSequence.sequence.length - 1) {
+                    lightUp(event.target.dataset.id);
                     $event.stopPropagation();
                     console.log('right');
                     gameSequence.clicked = 0;
@@ -162,6 +163,7 @@ $(() => {
                     nextRound();
                     //if this click is not the last
                 } else {
+                    lightUp(event.target.dataset.id);
                     $event.stopPropagation();
                     console.log('right');
                     gameSequence.clicked++;
