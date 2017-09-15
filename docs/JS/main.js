@@ -86,6 +86,7 @@ $(() => {
             let temp = panels[i];
             panels[i] = panels[j];
             panels[j] = temp;
+            //console.log(i, j);
         }
         //take shiffled array and updates class and data-id to change panel
         $("#a").attr({ 'class': panels[0].class, "data-id": panels[0].id });
