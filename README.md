@@ -1,7 +1,8 @@
 # WDI_Project_1
 ---
 ### Project: Simon
-### Game App: [Simon](https://chris-mears.github.io/WDI_Project_1/)
+### Game App(GitHub Pages): [Simon](https://chris-mears.github.io/WDI_Project_1/)
+### Game App(Bit Balloon): [Simon](http://cmears-simongame.bitballoon.com/)
 ### Trello board: [WDI Project 1](https://trello.com/b/7jtXGODn/wdi-project-1-game)
 ### Technologies used: jQuey/Javascript, CSS, HTML
 ### Wireframes: 
